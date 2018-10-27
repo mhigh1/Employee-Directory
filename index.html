@@ -13,8 +13,8 @@
         <div class="row border mt-3">
             <div id="sideNav" class="col-3 bg-dark text-light p-0">
                 <ul class="list-group text-center">
-                    <li class="list-group-item bg-dark border-0">View</li>
-                    <li class="list-group-item bg-dark border-0">Add</li>
+                    <li id="view" class="list-group-item bg-dark border-0">View</li>
+                    <li id="add" class="list-group-item bg-dark border-0">Add</li>
                     <li class="list-group-item bg-dark border-0">Verify</li>
                     <li class="list-group-item bg-dark border-0">Update</li>
                     <li class="list-group-item bg-dark border-0">Delete</li>
@@ -22,21 +22,50 @@
             </div>
             <div class="col-9 bg-light py-3">
                 <div>
-                    <form>
+                    <form id="frmSearch">
                         <div class="form-group">
                             <div class="input-group">
-                                <input type="text" class="form-control" id="search">
+                                <input id="search" class="form-control" type="text">
                                 <div class="input-group-append">
-                                    <button class="btn btn-primary" type="button">Search</button>
+                                    <button id="btnSearch" class="btn btn-primary" type="button">Search</button>
                                 </div>
                             </div>
                             <small id="searchHelp" class="form-text text-muted">Search by Employee Name, Phone Number, or Office ID</small>
                         </div>
                     </form>
+                    <form id="frmAddContact" class="d-none">
+                        <div class="form-row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <input id="name" class="form-control" type="text" placeholder="name">
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <input id="phoneNumber" class="form-control" type="text" placeholder="phone number">
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <input id="officeNumber" class="form-control" type="text" placeholder="office number">
+                                </div>
+                            </div>
+                            <div class="col">
+                                <button id="btnAddContact" class="btn btn-primary" type="button" data-action="addContact">Add Contact</button>
+                            </div>
+                        </div>
+                    </form>
+                    <form id="frmDelete" class="d-none">
+
+                    </form>
+                    <form id="frmVerify" class="d-none">
+
+                    </form>
                     <hr>
                 </div>
                 <div class="pb-3">
                     <div id="contacts" class="row">
+                            <i class="fas fa-user"></i>
                         <!-- Contact Cards will appear here! -->
                     </div>
                 </div>
