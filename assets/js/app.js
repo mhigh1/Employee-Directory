@@ -11,8 +11,10 @@ const tmplContactCard = function(contactName, contactTel, contactOfc, contactPho
             <img class="card-img-top rounded-circle m-auto w-75" src="./assets/images/photos/${contactPhoto}" alt="Employee Photo">
             <div class="card-body">
                 <h5 class="card-title">${contactName}</h5>
-                <p class="card-text">Tel: ${contactTel}</p>
-                <p class="card-text">Office: ${contactOfc}</p>
+                <ul class="list-group">
+                    <li class="list-group-item border-0 p-0">Tel: ${contactTel}</li>
+                    <li class="list-group-item border-0 p-0">Office: ${contactOfc}</li>
+                <ul>
             </div>
         </div>
     </div>
