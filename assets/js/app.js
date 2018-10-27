@@ -6,14 +6,14 @@ String.prototype.toProperCase = function () {
 // Contact Card Template
 const tmplContactCard = function(contactName, contactTel, contactOfc, contactPhoto) {
     return `
-    <div class="col-sm-4">
+    <div class="col-sm-12 col-md-6 col-lg-4">
         <div class="card p-3 mb-3">
             <img class="card-img-top rounded-circle m-auto w-75" src="./assets/images/photos/${contactPhoto}" alt="Employee Photo">
             <div class="card-body">
                 <h5 class="card-title">${contactName}</h5>
                 <ul class="list-group">
-                    <li class="list-group-item border-0 p-0">Tel: ${contactTel}</li>
-                    <li class="list-group-item border-0 p-0">Office: ${contactOfc}</li>
+                    <li class="list-group-item border-0 p-0"><i class="fas fa-phone"></i> ${contactTel}</li>
+                    <li class="list-group-item border-0 p-0"><i class="fas fa-building"></i> ${contactOfc}</li>
                 <ul>
             </div>
         </div>
@@ -119,6 +119,11 @@ $('li#add').on('click',function() {
 
 // Search for contacts by name, phone number, or office number
 $('#btnSearch').on('click', searchContacts);
+$('#frmSearch').on('submit', function(e){
+    e.preventDefault();
+    searchContacts();
+    return false; 
+});
 
 // Add a contact record to employeeList array and render all contacts
 $('#btnAddContact').on('click', function() {
@@ -133,9 +138,8 @@ $('#btnAddContact').on('click', function() {
 
 
 // Override default form submit action on ENTER key
-$('#frmSearch').on('submit', function(e){
+$('form').on('submit', function(e){
     e.preventDefault();
-    searchContacts();
     return false; 
 });
 
