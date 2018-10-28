@@ -147,6 +147,25 @@ const updateContact = function() {
     document.querySelector("form[name='frmUpdate']").reset();
 }
 
+// Delete a Contact
+const deleteContact = function() {
+    const name = $('#txtNameToDelete').val();
+    const results = filterObjectsByKey(employeeList, 'name', name, true);
+
+    if(results.length === 1) {
+        const pos = employeeList.map(contact => contact.name).indexOf(name);
+        employeeList.splice(pos, 1);
+        $('#result-bar').html(`<div class="px-3 pb-3 font-italic">Record for ${name} deleted.</div>`);
+        renderContacts();
+    } else if (results.length > 1 && !!name) {
+        $('#result-bar').html(`<div class="px-3 pb-3 font-italic">Found ${results.length} records using criteria '${name}'. Unable to delete record.</div>`);
+    } else {
+        $('#result-bar').html(`<div class="px-3 font-italic">Unable to find a record using criteria '${name}'.</div>`);
+    }
+
+    document.querySelector("form[name='frmDelete']").reset();
+}
+
 // CALLBACK FUNCTIONS //
 // SideNav Event Actions
 $('li#view').on('click', function() {
@@ -218,6 +237,8 @@ $("form[name='frmUpdate']").on('submit',function(e){
 // Delete a contact record from employeeList array and render all contacts
 $("form[name='frmDelete']").on('submit',function(e){
     e.preventDefault();
+    $('#contents div').empty();
+    deleteContact();
     return false;
 });
 
