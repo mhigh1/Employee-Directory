@@ -23,18 +23,18 @@
             </div>
             <div class="col-9 bg-light py-3">
                 <div>
-                    <form id="frmSearch">
+                    <form name="frmSearch">
                         <div class="form-group">
                             <div class="input-group">
                                 <input id="search" class="form-control" type="text">
                                 <div class="input-group-append">
-                                    <button id="btnSearch" class="btn btn-primary" type="button"><div class="fas fa-search"></div><div class="d-none d-md-inline px-2">Search</div></button>
+                                    <button id="btnSearch" class="btn btn-primary" type="submit"><div class="fas fa-search"></div><div class="d-none d-md-inline px-2">Search</div></button>
                                 </div>
                             </div>
                             <small class="form-text text-muted d-none d-md-block">Search by Name, Phone Number, or Office ID</small>
                         </div>
                     </form>
-                    <form id="frmAddContact" class="d-none">
+                    <form name="frmAddContact" class="d-none">
                         <div class="form-row m-auto">
                             <div class="form-group col-sm-12 col-md pb-2">
                                 <input id="name" class="form-control" type="text" placeholder="name">
@@ -46,22 +46,22 @@
                                 <input id="officeNumber" class="form-control" type="text" placeholder="office number">
                             </div>
                             <div class="px-1">
-                                <button id="btnAddContact" class="btn btn-primary" type="button"><div class="fas fa-plus"></div><div class="d-inline px-2">Add</div></button>
+                                <button id="btnAddContact" class="btn btn-primary" type="submit"><div class="fas fa-plus"></div><div class="d-inline px-2">Add</div></button>
                             </div>
                         </div>
                     </form>
-                    <form id="frmVerify" class="d-none">
+                    <form name="frmVerify" class="d-none">
                         <div class="form-group">
                             <div class="input-group">
-                                <input id="txtVerify" class="form-control" type="text">
+                                <input id="txtNameToVerify" class="form-control" type="text">
                                 <div class="input-group-append">
-                                    <button id="btnVerify" class="btn btn-primary" type="button"><div class="fas fa-search"></div><div class="d-none d-md-inline px-2">Verify</div></button>
+                                    <button id="btnVerify" class="btn btn-primary" type="submit"><div class="fas fa-search"></div><div class="d-none d-md-inline px-2">Verify</div></button>
                                 </div>
                             </div>
                             <small class="form-text text-muted d-none d-md-block">Enter an Employee Name to Verify</small>
                         </div>
                     </form>
-                    <form id="frmUpdate" class="d-none">
+                    <form name="frmUpdate" class="d-none">
                         <div class="form-row m-auto">
                             <div class="form-group col-sm-12 col-md pb-2">
                                 <input id="emplName" class="form-control" type="text" placeholder="name">
@@ -73,16 +73,16 @@
                                 <input id="newOfficeNumber" class="form-control" type="text" placeholder="office number">
                             </div>
                             <div class="px-1">
-                                <button id="btnUpdateContact" class="btn btn-primary" type="button"><div class="fas fa-pencil-alt"></div><div class="d-inline px-2">Update</div></button>
+                                <button id="btnUpdateContact" class="btn btn-primary" type="submit"><div class="fas fa-pencil-alt"></div><div class="d-inline px-2">Update</div></button>
                             </div>
                         </div>
                     </form>
-                    <form id="frmDelete" class="d-none">
+                    <form name="frmDelete" class="d-none">
                         <div class="form-group">
                             <div class="input-group">
                                 <input id="txtDelete" class="form-control" type="text">
                                 <div class="input-group-append">
-                                    <button id="btnDelete" class="btn btn-primary" type="button"><div class="fas fa-trash-alt"></div><div class="d-none d-md-inline px-2">Delete</div></button>
+                                    <button id="btnDelete" class="btn btn-primary" type="submit"><div class="fas fa-trash-alt"></div><div class="d-none d-md-inline px-2">Delete</div></button>
                                 </div>
                             </div>
                             <small class="form-text text-muted d-none d-md-block">Enter an Employee Name to Delete</small>
@@ -90,7 +90,8 @@
                     </form>
                     <hr>
                 </div>
-                <div class="pb-3">
+                <div id="contents" class="pb-3">
+                    <div id="result-bar"></div>
                     <div id="contacts" class="row">
                         <!-- Contact Cards will appear here! -->
                     </div>

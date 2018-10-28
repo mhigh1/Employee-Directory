@@ -1,4 +1,4 @@
-const $ = function (selector) {
+const $ = function(selector) {
   const nodeList = document.querySelectorAll(selector);
 
   const text = function(content){
