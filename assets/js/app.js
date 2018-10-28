@@ -105,16 +105,37 @@ const addContact = function() {
 // CALLBACK FUNCTIONS //
 // SideNav Event Actions
 $('li#view').on('click', function() {
+    $('form').addClass('d-none');
     $('#frmSearch').removeClass('d-none');
-    $('#frmAddContact').addClass('d-none');
     $('#contacts').empty();
     renderContacts();
 });
 
 $('li#add').on('click',function() {
-    $('#frmSearch').addClass('d-none');
+    $('form').addClass('d-none');
     $('#frmAddContact').removeClass('d-none');
     $('#contacts').empty();
+    renderContacts();
+});
+
+$('li#verify').on('click',function() {
+    $('form').addClass('d-none');
+    $('#frmVerify').removeClass('d-none');
+    $('#contacts').empty();
+});
+
+$('li#update').on('click',function() {
+    $('form').addClass('d-none');
+    $('#frmUpdate').removeClass('d-none');
+    $('#contacts').empty();
+    renderContacts();
+});
+
+$('li#delete').on('click',function() {
+    $('form').addClass('d-none');
+    $('#frmDelete').removeClass('d-none');
+    $('#contacts').empty();
+    renderContacts();
 });
 
 // Search for contacts by name, phone number, or office number
