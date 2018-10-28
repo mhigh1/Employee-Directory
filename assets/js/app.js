@@ -117,12 +117,34 @@ const verifyContact = function() {
     if(results.length === 1) {
         $('#result-bar').html(`<div class="px-3 text-success"><i class="fas fa-check-circle"></i><span class="px-2">'${name}' verified!</span></div>`);
     } else if (results.length > 1 && !!name) {
-        $('#result-bar').prepend(`<div class="font-italic">Found ${results.length} records using criteria '${name}'.</div>`);
+        $('#result-bar').html(`<div class="pb-3 font-italic">Found ${results.length} records using criteria '${name}'.</div>`);
         renderContacts(results);
     } else {
         $('#result-bar').html(`<div class="px-3 font-italic">Unable to find a record using criteria '${name}'.</div>`);
     }
     $('#txtNameToVerify').val('');
+}
+
+// Update a Contact
+const updateContact = function() {
+    const name = $('#emplName').val();
+    const phoneNumber = $('#newPhoneNumber').val();
+    const officeNumber = $('#newOfficeNumber').val();
+    const results = filterObjectsByKey(employeeList, 'name', name, true);
+
+    if(results.length === 1) {
+        const pos = employeeList.map(contact => contact.name).indexOf(name);
+        employeeList[pos].phoneNum = phoneNumber;
+        employeeList[pos].officeNum = officeNumber;
+        $('#result-bar').html(`<div class="pb-3 font-italic">Record for ${name} updated.</div>`);
+        renderContacts();
+    } else if (results.length > 1 && !!name) {
+        $('#result-bar').html(`<div class="pb-3 font-italic">Found ${results.length} records using criteria '${name}'. Unable to update record.</div>`);
+    } else {
+        $('#result-bar').html(`<div class="px-3 font-italic">Unable to find a record using criteria '${name}'.</div>`);
+    }
+
+    document.querySelector("form[name='frmUpdate']").reset();
 }
 
 // CALLBACK FUNCTIONS //
@@ -188,6 +210,8 @@ $("form[name='frmVerify']").on('submit',function(e){
 // Update a contact record and render all contacts
 $("form[name='frmUpdate']").on('submit',function(e){
     e.preventDefault();
+    $('#contents div').empty();
+    updateContact();
     return false;
 });
 
