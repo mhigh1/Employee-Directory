@@ -97,16 +97,24 @@ const searchContacts = function() {
 
 // Add Contact to employeeList Array
 const addContact = function() {
-    const firstName = $('#name').val();
+    const name = $('#name').val();
     const phoneNumber = $('#phoneNumber').val();
     const officeNumber = $('#officeNumber').val();
     const objContact = {
-        name: firstName,
+        name: name,
         phoneNum: phoneNumber,
         officeNum: officeNumber,
         profilePhoto: 'defaultPhoto.png'
     }
-    employeeList.unshift(objContact);
+    const results = filterObjectsByKey(employeeList, 'name', name, true);
+
+    if (results.length === 0) {
+        employeeList.unshift(objContact);
+        $('#result-bar').html(`<div class="px-3 pb-3 font-italic">Added record for '${name}'.</div>`);
+    } else {
+        $('#result-bar').html(`<div class="px-3 pb-3 font-italic text-danger">A record with the name '${name}' already exists.</div>`);
+    }
+
     document.querySelector("form[name='frmAddContact']").reset(); // FIX: reset() not a method of querySelectorAll
 }
 
