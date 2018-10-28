@@ -90,7 +90,7 @@ const searchContacts = function() {
     if (results.length) {
         renderContacts(results);
     } else {
-        $('#result-bar').html(`<div class="px-3 font-italic">No contacts found that matches search criteria '${criteria}'.</div>`);
+        $('#result-bar').html(`<div class="px-3 pb-3 font-italic">No contacts found that matches search criteria '${criteria}'.</div>`);
     }
     $('#search').val('');
 }
@@ -110,7 +110,7 @@ const addContact = function() {
 
     if (results.length === 0) {
         employeeList.unshift(objContact);
-        $('#result-bar').html(`<div class="px-3 pb-3 font-italic">Added record for '${name}'.</div>`);
+        $('#result-bar').html(`<div class="px-3 pb-3 font-italic text-success">Added record for '${name}'.</div>`);
     } else {
         $('#result-bar').html(`<div class="px-3 pb-3 font-italic text-danger">A record with the name '${name}' already exists.</div>`);
     }
@@ -123,12 +123,12 @@ const verifyContact = function() {
     const name = $('#txtNameToVerify').val();
     let results = filterObjectsByKey(employeeList, 'name', name, true);
     if(results.length === 1) {
-        $('#result-bar').html(`<div class="px-3 text-success"><i class="fas fa-check-circle"></i><span class="px-2">'${name}' verified!</span></div>`);
+        $('#result-bar').html(`<div class="px-3 pb-3 text-success"><i class="fas fa-check-circle"></i><span class="px-2">'${name}' verified!</span></div>`);
     } else if (results.length > 1 && !!name) {
-        $('#result-bar').html(`<div class="pb-3 font-italic">Found ${results.length} records using criteria '${name}'.</div>`);
+        $('#result-bar').html(`<div class="px-3 pb-3 font-italic">Found ${results.length} records using criteria '${name}'.</div>`);
         renderContacts(results);
     } else {
-        $('#result-bar').html(`<div class="px-3 font-italic">Unable to find a record using criteria '${name}'.</div>`);
+        $('#result-bar').html(`<div class="px-3 pb-3 font-italic">Unable to find a record using criteria '${name}'.</div>`);
     }
     $('#txtNameToVerify').val('');
 }
@@ -144,12 +144,12 @@ const updateContact = function() {
         const pos = employeeList.map(contact => contact.name).indexOf(name);
         employeeList[pos].phoneNum = phoneNumber;
         employeeList[pos].officeNum = officeNumber;
-        $('#result-bar').html(`<div class="pb-3 font-italic">Record for ${name} updated.</div>`);
+        $('#result-bar').html(`<div class="px-3 pb-3 font-italic text-success">Record for '${name}' updated.</div>`);
         renderContacts();
     } else if (results.length > 1 && !!name) {
-        $('#result-bar').html(`<div class="pb-3 font-italic">Found ${results.length} records using criteria '${name}'. Unable to update record.</div>`);
+        $('#result-bar').html(`<div class="px-3 pb-3 font-italic text-warning">Found ${results.length} records using criteria '${name}'. Unable to update record.</div>`);
     } else {
-        $('#result-bar').html(`<div class="px-3 font-italic">Unable to find a record using criteria '${name}'.</div>`);
+        $('#result-bar').html(`<div class="px-3 pb-3 font-italic">Unable to find a record using criteria '${name}'.</div>`);
     }
 
     document.querySelector("form[name='frmUpdate']").reset();
@@ -163,10 +163,10 @@ const deleteContact = function() {
     if(results.length === 1) {
         const pos = employeeList.map(contact => contact.name).indexOf(name);
         employeeList.splice(pos, 1);
-        $('#result-bar').html(`<div class="px-3 pb-3 font-italic">Record for ${name} deleted.</div>`);
+        $('#result-bar').html(`<div class="px-3 pb-3 font-italic text-success">Record for '${name}' deleted.</div>`);
         renderContacts();
     } else if (results.length > 1 && !!name) {
-        $('#result-bar').html(`<div class="px-3 pb-3 font-italic">Found ${results.length} records using criteria '${name}'. Unable to delete record.</div>`);
+        $('#result-bar').html(`<div class="px-3 pb-3 font-italic text-warning">Found ${results.length} records using criteria '${name}'. Unable to delete record.</div>`);
     } else {
         $('#result-bar').html(`<div class="px-3 font-italic">Unable to find a record using criteria '${name}'.</div>`);
     }
