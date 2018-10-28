@@ -34,16 +34,16 @@
                             <small class="form-text text-muted d-none d-md-block">Search by Name, Phone Number, or Office ID</small>
                         </div>
                     </form>
-                    <form name="frmAddContact" class="d-none">
+                    <form name="frmAddContact" class="d-none needs-validation" novalidate>
                         <div class="form-row m-auto">
                             <div class="col-sm-12 col-md pb-2">
-                                <input id="name" class="form-control" type="text" placeholder="name">
+                                <input id="name" class="form-control" type="text" placeholder="name" required>
                             </div>
                             <div class="col-sm-12 col-md pb-2">
-                                <input id="phoneNumber" class="form-control" type="text" placeholder="phone number">
+                                <input id="phoneNumber" class="form-control" type="text" placeholder="phone number" required>
                             </div>
                             <div class="col-sm-12 col-md pb-2">
-                                <input id="officeNumber" class="form-control" type="text" placeholder="office number">
+                                <input id="officeNumber" class="form-control" type="text" placeholder="office number" required>
                             </div>
                             <div class="px-1">
                                 <button id="btnAddContact" class="btn btn-primary" type="submit"><div class="fas fa-plus"></div><div class="d-inline px-2">Add</div></button>

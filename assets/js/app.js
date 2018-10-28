@@ -1,3 +1,10 @@
+//JS pure document ready using statechange
+document.onreadystatechange = () => {
+    if (document.readyState === 'complete') {
+      renderContacts();
+    }
+  };
+
 // Add toProperCase property to string objects
 String.prototype.toProperCase = function () {
     return this.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
@@ -114,7 +121,7 @@ const addContact = function() {
     } else {
         $('#result-bar').html(`<div class="px-3 pb-3 font-italic text-danger">A record with the name '${name}' already exists.</div>`);
     }
-
+    $("form[name='frmAddContact']").removeClass('was-validated');
     document.querySelector("form[name='frmAddContact']").reset(); // FIX: reset() not a method of querySelectorAll
 }
 
@@ -220,6 +227,11 @@ $("form[name='frmSearch']").on('submit', function(e){
 // Add a contact record to employeeList array and render all contacts
 $("form[name='frmAddContact']").on('submit', function(e){
     e.preventDefault();
+    if (!e.target.checkValidity()) {
+        e.target.classList.add('was-validated');
+        return false;    
+    }
+
     $('#contacts').empty();
     addContact();
     renderContacts();
@@ -255,6 +267,3 @@ $('form').on('submit', function(e){
     e.preventDefault();
     return false; 
 });
-
-// runtime
-renderContacts();
